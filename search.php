@@ -18,9 +18,15 @@
         <?php 
         if(isset($_POST['submit'])) {
             $search = $_POST['search'];
-             
             $query = "SELECT * FROM posts WHERE post_tag LIKE '%$search%' ";
             $result = mysqli_query($conn,$query);
+            $count = mysqli_num_rows($result);
+
+            if($count == 0 || $_POST['search'] == "") {
+                echo "<h1>No result</h1>";
+            }
+
+            else {
             while($row = mysqli_fetch_assoc($result)) {
             $post_title = $row['post_title'];
             $post_author = $row['post_author'];
@@ -36,6 +42,8 @@
         <?php 
         }  
       }
+    }
+  
     ?>
     </div>
 </body>

@@ -26,8 +26,10 @@
                 <h2>These are the categories to put in the search bar: </h2>
                 <h3><?php echo $post_tag; ?></h3>
         <form action="search.php" method="post">
-            <input type="text" name="search">
-            <input type="submit" name="submit">
+            <input type="text" name="search"> 
+            <input type="submit" name="submit" >
+           
+          
         </form>
         <?php
             }

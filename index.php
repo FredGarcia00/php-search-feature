@@ -15,20 +15,25 @@
 </head>
 <body>
     <div class="container">
-        <?php 
-        while($row = mysqli_fetch_assoc($result)) {
-            $post_title = $row['post_title'];
-            $post_author = $row['post_author'];
-            $post_content = $row['post_content'];
-        
-        
+        <?php
+        if($conn) {
+            $query = "SELECT * FROM posts ";
+            $result = mysqli_query($conn,$query);
+            while($row = mysqli_fetch_assoc($result)) {
+                $post_tag=$row['post_tag'];
+                
+                ?>
+                <h2>These are the categories to put in the search bar: </h2>
+                <h3><?php echo $post_tag; ?></h3>
+        <form action="search.php" method="post">
+            <input type="text" name="search">
+            <input type="submit" name="submit">
+        </form>
+        <?php
+            }
+        }
         ?>
-        <h1><?php echo $post_title ?></h1>
-        <h3>by: <?php echo $post_author ?></h3>
-        <div class="content">
-            <?php echo $post_content; ?>
-        </div>
-      <?php }  ?>
+    
     </div>
 </body>
 </html>

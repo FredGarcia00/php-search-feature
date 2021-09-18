@@ -1,3 +1,10 @@
+<?php include("inc/db.php"); ?>
+<style>
+    <?php include("styles/main.css"); ?>
+</style>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +14,21 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        <input type="text">
-        <input type="submit">
-    </form>
+    <div class="container">
+        <?php 
+        while($row = mysqli_fetch_assoc($result)) {
+            $post_title = $row['post_title'];
+            $post_author = $row['post_author'];
+            $post_content = $row['post_content'];
+        
+        
+        ?>
+        <h1><?php echo $post_title ?></h1>
+        <h3>by: <?php echo $post_author ?></h3>
+        <div class="content">
+            <?php echo $post_content; ?>
+        </div>
+      <?php }  ?>
+    </div>
 </body>
 </html>
